@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2">
+
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="网络请求返回内容在此显示。"
+            android:textSize="20sp" />
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <Button
+        android:id="@+id/btn_get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#03A9F4"
+        android:text="原生GET请求"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btn_get_okhttp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#03A9F4"
+        android:text="原生POST请求"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btn_post_okhttp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_get_okhttp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00BCD4"
+        android:text="OkHttp GET请求"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btn_xml_pull"
+        app:layout_constraintEnd_toEndOf="@+id/btn_get"
+        app:layout_constraintStart_toStartOf="@+id/btn_get"
+        app:layout_constraintTop_toBottomOf="@+id/btn_get" />
+
+    <Button
+        android:id="@+id/btn_post_okhttp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00BCD4"
+        android:text="OkHttp POST请求"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btn_xml_sax"
+        app:layout_constraintEnd_toEndOf="@+id/btn_post"
+        app:layout_constraintStart_toStartOf="@+id/btn_post"
+        app:layout_constraintTop_toBottomOf="@+id/btn_post" />
+
+    <Button
+        android:id="@+id/btn_xml_pull"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#8BC34A"
+        android:text="PULL解析XML"
+        app:layout_constraintBottom_toTopOf="@+id/btn_json_jsonOject"
+        app:layout_constraintEnd_toEndOf="@+id/btn_get_okhttp"
+        app:layout_constraintStart_toStartOf="@+id/btn_get_okhttp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_get_okhttp"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btn_xml_sax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#8BC34A"
+        android:text="SAX解析XML"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btn_json_gson"
+        app:layout_constraintEnd_toEndOf="@+id/btn_post_okhttp"
+        app:layout_constraintStart_toStartOf="@+id/btn_post_okhttp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_post_okhttp" />
+
+    <Button
+        android:id="@+id/btn_json_jsonOject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#CDDC39"
+        android:text="JSONOBJECT解析JSON"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="@+id/btn_xml_pull"
+        app:layout_constraintStart_toStartOf="@+id/btn_xml_pull"
+        app:layout_constraintTop_toBottomOf="@+id/btn_xml_pull" />
+
+    <Button
+        android:id="@+id/btn_json_gson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#CDDC39"
+        android:text="GSON解析JSON"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="@+id/btn_xml_sax"
+        app:layout_constraintStart_toStartOf="@+id/btn_xml_sax"
+        app:layout_constraintTop_toBottomOf="@+id/btn_xml_sax" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
