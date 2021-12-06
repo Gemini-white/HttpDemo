@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.httpdemo.databinding.ActivityMainBinding
 import com.example.httpdemo.util.HttpUtil
+import com.example.httpdemo.util.JsonUtil
 import com.example.httpdemo.util.XmlUtil
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
@@ -15,7 +16,7 @@ import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityMainBinding
-    private val ip = "10.95.11.13"
+    private val ip = "10.95.3.61"
 
     //private val dataTypeArray = resources.getStringArray(R.array.arr_data_type)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -138,7 +139,29 @@ class MainActivity : AppCompatActivity() {
 
             } }
 
-        mBinding.btnJsonJsonOject.setOnClickListener {  }
+        mBinding.btnJsonJsonOject.setOnClickListener { thread {
+            try {
+                //创建OkHttp客户端对象
+                val client = OkHttpClient()
+                //创建Request对象,用来发送Http请求
+                val request = Request.Builder()
+//                                .url("http://$ip:8080/get")
+                    //发送xml请求
+                    .url("http://$ip:8080/json/get_data.json")
+                    .build()
+                //发出网络请求,并接受回传数据
+                val response = client.newCall(request).execute()
+                //数据解析出来
+                val data = response.body?.string()
+                runOnUiThread {
+                    //mBinding.textView.text = data
+                    mBinding.textView.text = JsonUtil.parseJsonWithJSONObject(data.toString())
+                }
+            }catch (e:Exception){
+                e.printStackTrace()
+            }
+
+        } }
 
         mBinding.btnJsonGson.setOnClickListener {  }
     }
