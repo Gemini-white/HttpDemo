@@ -8,7 +8,7 @@ import java.lang.Exception
 import java.lang.StringBuilder
 
 object JsonUtil {
-    fun parseJsonWithJSONObject(data: String) = try {
+    fun parseJsonWithJSONObject(data: String?) = try {
         //               []数组
         val jsonArray = JSONArray(data)
         val stringBuilder = StringBuilder()
@@ -25,7 +25,7 @@ object JsonUtil {
         e.printStackTrace().toString()
     }
 
-    fun parseJsonWithGson(data: String): String {
+    fun parseJsonWithGson(data: String?): String {
 
         val gson = Gson()
         val appList = gson.fromJson(data, App::class.java)
